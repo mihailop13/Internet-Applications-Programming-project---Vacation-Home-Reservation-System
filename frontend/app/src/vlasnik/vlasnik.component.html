@@ -1,0 +1,26 @@
+<header>
+      <a (click)="switchView('promeniLozinku')">Promeni lozinku</a>
+      <a (click)="switchView('profil')">Profil</a>
+      <a (click)="switchView('dodajVikendicu')">Dodaj vikendicu</a>
+      <a (click)="switchView('rezervacije')">Moje rezervacije</a>
+      <a (click)="switchView('vikendice')">Moje vikendice</a>
+      <a routerLink="/login">Izloguj se</a>
+</header>
+<div>
+    @switch (trenutnoPrikazano) {
+        @case ("profil") {
+            <app-profil></app-profil>
+        } @case("vikendice"){
+            <app-vikendice-vlasnik></app-vikendice-vlasnik>
+        } @case("rezervacije"){
+            <app-rezervacije-vlasnik></app-rezervacije-vlasnik>
+        } @case("dodajVikendicu"){
+            <app-dodaj-vikendicu></app-dodaj-vikendicu>
+        } @case("promeniLozinku"){
+            <app-promena-lozinke></app-promena-lozinke>
+        } 
+    }
+</div>
+<footer>
+    <div>Mihailo Pantelić - ETF</div>
+</footer>

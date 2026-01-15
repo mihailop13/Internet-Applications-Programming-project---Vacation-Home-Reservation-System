@@ -1,0 +1,92 @@
+header {
+    position: fixed;
+    align-items: left;
+    left: 0;
+    width: 100%;
+    top: 0;
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-left: 10px;
+    background-color: lightseagreen;
+    color: white;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left:0;
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+    padding: 10px 30px;
+    background-color: lightseagreen;
+    color: white;
+}
+
+strong{
+    font-size: 18px;
+}
+
+img {
+    width: 150px;
+    height: 150px;
+    margin: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+img:hover {
+    transform: scale(1.25); 
+}
+
+header a{
+    color: white;
+    text-decoration: none;
+    padding: 0 10px;
+    border-right: 1px solid white;
+    cursor: pointer;
+    border-bottom: 1px;
+}
+
+div{
+    margin-top: 40px;
+}
+
+button{
+    height: 30px;
+    background-color: lightseagreen;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+button:hover { 
+  background-color: rgb(11, 155, 136); 
+}
+
+form {
+    margin-top: 15px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    max-width: 400px;
+    background-color: #f9f9f9;
+}
+
+form strong {
+    margin-top: 7px;
+    font-size: 14px;
+}
+
+form input[type="datetime-local"],
+form input[type="number"] {
+    width: 100%;
+    padding: 6px 8px;
+    margin-bottom: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}

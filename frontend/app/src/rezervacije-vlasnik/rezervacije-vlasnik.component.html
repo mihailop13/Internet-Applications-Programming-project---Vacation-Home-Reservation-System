@@ -1,0 +1,30 @@
+<div>
+  <h3>Broj neobradjenih rezervacija: {{rezervacije.length}}</h3><br>
+  @if(rezervacije.length > 0){
+  <table border="1">
+    <tr>
+      <th>Datum dolaska</th>
+      <th>Datum odlaska</th>
+      <th>Vikendica</th>
+      <th></th>
+    </tr>
+    @for(r of rezervacije; track $index){
+      @if(r.odobreno === "cekanje"){
+          <tr>
+          <td>{{changeDateFormat(r.datumDolaska)}}</td>
+          <td>{{changeDateFormat(r.datumOdlaska)}}</td>
+          <td>{{getVikendicaById(r.vikendica)?.naziv}}</td>
+          <button (click)="potvrdi(r)" class = "button-tabela">Potvrdi</button>
+          @if(komentarZa !== r.id){
+            <button (click)="unesiKomentar(r.id)" class = "button-tabela">Odbij</button> 
+          } @else{
+            Komentar: <input type="text" [(ngModel)] = "r.komentar"> <button class = "button-tabela" (click)="odbij(r)">Odbij!</button>
+          }
+      </tr>
+      }
+    }
+  </table>
+  } @else {
+    <p>Nema neobradjenih rezervacija.</p>
+  }
+</div>

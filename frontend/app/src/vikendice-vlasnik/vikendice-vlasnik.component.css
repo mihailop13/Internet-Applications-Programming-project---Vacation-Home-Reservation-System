@@ -1,0 +1,66 @@
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #999;
+    padding: 8px 12px;
+}
+
+th {
+    background-color: #f2f2f2;
+    cursor: pointer;
+}
+
+.button-potrvrda{
+    padding: 6px 12px;
+    background-color: lightseagreen;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.button-vikendica{
+    height: 20px;
+    background-color: lightseagreen;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+button:hover { 
+  background-color: rgb(11, 155, 136); 
+}
+
+h3{
+  margin-top: 50px; 
+  margin-bottom: 10px;
+}
+
+form{
+    margin-top: 25px;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+    margin-left: 5px;  
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="file"],
+textarea {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}

@@ -1,0 +1,16 @@
+<header>
+      <a routerLink="/">Nazad</a>
+</header>
+<div>
+    <h2>Unesite podatke:</h2>
+    Korisnicko ime: <input type="text" [(ngModel)]="username"> <br>
+    Lozinka: <input type="password" [(ngModel)]="password"> <br>
+    <button (click)="login()">Login</button>
+    @if(!admin){ <button (click)="goToRegister()">Register</button> }
+
+    <p class="error">{{error}}</p>
+</div>
+
+<footer>
+    Mihailo Pantelić - ETF
+</footer>

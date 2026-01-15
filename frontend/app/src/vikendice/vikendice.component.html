@@ -1,0 +1,57 @@
+<h3 class = "h3-prvi">Dostupne vikendice:</h3>
+<b>Pretraga:</b>
+Naziv:
+<input type="text" [(ngModel)] = "naziv">
+Mesto:
+<input type="text" [(ngModel)] = "mesto">
+<button (click) = "pretraga()">Pretraga</button>
+<hr>
+@if(vikendice.length > 0 && pretragaVikendice.length == 0){
+<h3 class = "h3-vikendice">Broj vikendica: {{vikendice.length}}</h3><br>
+<table border="1">
+  <tr>
+    <th (click)="sortNaziv()">Naziv</th>
+    <th (click)="sortMesto()">Mesto</th>
+    @if(!pocetna){
+      <th>Prosecna ocena:</th>
+    }
+  </tr>
+  @for(v of vikendice; track v.naziv){
+    <tr>
+        @if(!pocetna){
+          <td (click)="vikendicaInfo(v)">{{v.naziv}}</td>
+        } @else{
+          <td>{{v.naziv}}</td>
+        }
+        <td>{{v.mesto}}</td>
+        @if(!pocetna){
+          <td>{{prosecnaOcena(v)}}</td>
+        }
+    </tr>
+    <tr>
+  }
+</table>
+} @else if(pretragaVikendice.length > 0){
+  <h3>Broj vikendica: {{pretragaVikendice.length}}</h3><br>
+  <table border="1">
+  <tr>
+    <th>Naziv</th>
+    <th>Mesto</th>
+    @if(!pocetna){
+      <th>Prosecna ocena:</th>
+    }
+  </tr>
+  @for(v of pretragaVikendice; track v.naziv){
+    <tr>
+        <td (click)="vikendicaInfo(v)">{{v.naziv}}</td>
+        <td>{{v.mesto}}</td>
+        @if(!pocetna){
+          <td>{{prosecnaOcena(v)}}</td>
+        }
+    </tr>
+  }
+</table>
+}
+@else {
+    <p>Nema dostupnih vikendica.</p>
+}

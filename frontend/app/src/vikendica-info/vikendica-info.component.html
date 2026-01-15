@@ -1,0 +1,39 @@
+<header>
+  <a routerLink="/turista">Nazad</a>
+  <a routerLink="/login">Izloguj se</a>
+</header>
+<div>
+<strong>Naziv: </strong>{{vikendica.naziv}}<br>
+<strong>Mesto: </strong>{{vikendica.mesto}}<br>
+<strong>Fotografje: </strong><br>
+@if (imagesUrlFinal.length > 0) {
+  @for (image of imagesUrlFinal; track $index) {
+    <img [src]="image">
+  }
+}
+<br>
+<strong>Usluge: </strong>{{vikendica.usluge}}<br>
+<strong>Cenovnik(RSD): </strong><br>
+    -Leto(maj, jun, jul i avgust): {{vikendica.cenaLeto}}<br>
+    -Zima: {{vikendica.cenaZima}}<br>
+<strong>Telefon: </strong>{{vlasnik.kontaktTelefon}}<br>
+
+@if(rezervacija){
+    <form (ngSubmit)="plati()" style="margin-top: 15px;">
+        <strong>Izaberite datum dolaska:</strong><br>
+        <input type="datetime-local" [(ngModel)] = "mojaRezervacija.datumDolaska" name = "datumDolaska"><br>
+        <strong>Izaberite datum odlaska:</strong><br>
+        <input type="datetime-local" [(ngModel)] = "mojaRezervacija.datumOdlaska" name = "datumOdlaska"><br>
+        <strong>Broj odraslih:</strong>
+        <input type="number" [(ngModel)]="mojaRezervacija.brojOdraslih" name = "brojOdraslih"><br>
+        <strong>Broj dece:</strong>
+        <input type="number"[(ngModel)]="mojaRezervacija.brojDece" name = "brojDece"><br>
+        <button type="submit" style="width: 100%;">Predjite na formu za placanje</button>
+    </form>
+} @else{
+  <button (click)="rezervisi()" >Rezervisi</button>
+}
+</div>
+<footer>
+    <div>Mihailo Pantelić - ETF</div>
+</footer>

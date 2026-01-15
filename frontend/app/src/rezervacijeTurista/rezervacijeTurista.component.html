@@ -1,0 +1,79 @@
+<h3 class = "h3-prvi">Aktuelne rezervacije:</h3><br>
+@if(aktuelneRezervacije.length > 0){
+<h4>Broj aktuelnih rezervacija: {{aktuelneRezervacije.length}}</h4><br>
+<table border="1">
+  <tr>
+    <th>Datum dolaska</th>
+    <th>Datum odlaska</th>
+    <th>Naziv</th>
+    <th>Mesto</th>
+    <th>Odobreno</th>
+  </tr>
+  @for(r of aktuelneRezervacije; track $index){
+    <tr>
+      <td>{{changeDateFormat(r.datumDolaska)}}</td>
+      <td>{{changeDateFormat(r.datumOdlaska)}}</td>
+      @if(r.odobreno === "cekanje" || r.odobreno === "da"){
+        <td>{{getVikendicaById(r.vikendica)?.naziv}}</td>
+        <td>{{getVikendicaById(r.vikendica)?.mesto}}</td>
+        <td>{{r.odobreno}}</td>
+        @if(dosaoDanPre(r)){
+          <td><button class = "button-tabela" (click)="otkazi(r)">Otkazi</button></td>
+        }@else{<td></td>}
+        
+      }@else if(r.odobreno === "ne" && r.komentar === "Uklonjena vikendica!"){
+        <td>Uklonjeno!</td>
+        <td>Uklonjeno!</td>
+        <td>{{r.komentar}}</td>
+      }
+    </tr>
+  }
+</table>
+} @else {
+    <p>Nema aktuelnih rezervacija.</p>
+}
+<hr>
+<h3>Zavrsene rezervacije:</h3><br>
+@if(zavrseneRezervacije.length > 0){
+<p><strong>Broj zavrsenih rezervacija: {{zavrseneRezervacije.length}}</strong></p><br>
+<table border="1">
+  <tr>
+    <th>Datum pocetka:</th>
+    <th>Naziv:</th>
+    <th>Komentar:</th>
+    <th></th>
+  </tr>
+  @for(r of zavrseneRezervacije; track $index){
+    <tr>
+      <td>{{changeDateFormat(r.datumDolaska)}}</td>
+      @if(getVikendicaById(r.vikendica)){
+        <td>{{getVikendicaById(r.vikendica)?.naziv}}</td>
+      } @else{
+        <td>Uklonjeno!</td>
+      }
+      <td>{{r.komentar}}</td>
+      @if(r.ocena === 0 && r.komentar === ""){
+        <button class ="button-tabela" (click) = "oceni(r)">Oceni!</button>
+      } @else{
+        <td>Ocena: {{r.ocena}} </td>
+      }
+    </tr>
+  }
+  </table>
+} @else {
+  <p>Nema zavrsenih rezervacija.</p>
+} 
+
+@if(ocenjivanje == true){
+  Izaberi ocenu:
+  <select [(ngModel)] = "ocena" style = "margin-bottom: 5px;">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+  </select><br>
+  Komentar:<br>
+  <textarea [(ngModel)]="rezervacijaZaOcenu.komentar"></textarea><br>
+  <button class ="button-potvrda" (click) = "potvrdiOcenu()">Oceni!</button>
+}

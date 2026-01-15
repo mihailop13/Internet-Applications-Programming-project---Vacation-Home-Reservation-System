@@ -1,0 +1,51 @@
+<div>
+  <h3>Broj vikendica: {{mojeVikendice.length}}</h3><br>
+  @if(mojeVikendice.length > 0){
+  <table border="1">
+    <tr>
+      <th>Naziv</th>
+      <th>Mesto</th>
+      <th></th>
+    </tr>
+    @for(v of mojeVikendice; track $index){
+      <tr>
+        <td>{{v.naziv}}</td>
+        <td>{{v.mesto}}</td>
+        <td>
+          <button class="button-vikendica" (click)="izmeni(v)">Izmeni</button>
+          <button class="button-vikendica" (click)="obrisi(v)">Obrisi</button>
+        </td>
+      </tr>
+    }
+  </table>
+  } @else {
+      <p>Nema vasih vikendica u sistemu!.</p>
+  }
+
+  @if(izmeniForma){
+    <form (ngSubmit)="potvrdiIzmenu()">
+      <label for="naziv">Naziv vikendice:</label>
+      <input type="text" id="naziv" name="naziv" [(ngModel)]="izmenjenaVikendica.naziv" required>
+
+      <label for="mesto">Mesto:</label>
+      <input type="text" id="mesto" name="mesto" [(ngModel)]="izmenjenaVikendica.mesto" required>
+
+      <label for="usluge">Usluge (opis):</label>
+      <textarea id="usluge" name="usluge" rows="4" [(ngModel)]="izmenjenaVikendica.usluge" required></textarea>
+
+      <label for="cena">Cena noćenja leto(RSD):</label>
+      <input type="number" id="cena" name="cena" [(ngModel)]="izmenjenaVikendica.cenaLeto" required>
+
+      <label for="cena">Cena noćenja zima(RSD):</label>
+      <input type="number" id="cena" name="cena" [(ngModel)]="izmenjenaVikendica.cenaZima" required>
+
+      <label for="gSirina">Geografska sirina:</label>
+      <input type="number" id="gSirina" name="gSirina" [(ngModel)]="izmenjenaVikendica.gSirina">
+
+      <label for="gDuzina">Geografska duzina:</label>
+      <input type="number" id="gDuzina" name="gDuzina" [(ngModel)]="izmenjenaVikendica.gDuzina">
+
+      <button class = "button-potrvrda" type="submit">Potvrdi</button>
+    </form>
+  }
+</div>

@@ -1,0 +1,50 @@
+<div>
+    <label>Korisnicko ime:</label>
+    <input type="text" [(ngModel)]="user.korisnickoIme">
+  
+    <label>Lozinka:</label>
+    <input type="password" [(ngModel)]="user.lozinka">
+  
+    <label>Ime:</label>
+    <input type="text" [(ngModel)]="user.ime">
+  
+    <label>Prezime:</label>
+    <input type="text" [(ngModel)]="user.prezime">
+  
+    <label>Izaberite profilnu sliku:</label>
+    <input type="file" (change)="onFileSelected($event)">
+  
+    <label>Pol:</label>
+    <select [(ngModel)]="user.pol">
+      <option value="M">M</option>
+      <option value="Z">Z</option>
+    </select>
+ 
+    <label>Tip:</label>
+    <select [(ngModel)]="user.tip">
+      <option value="vlasnik">Vlasnik</option>
+      <option value="turista">Turista</option>
+    </select>
+  
+    <label>Adresa:</label>
+    <input type="text" [(ngModel)]="user.adresa">
+  
+    <label>Kontakt telefon:</label>
+    <input type="text" [(ngModel)]="user.kontaktTelefon">
+  
+    <label>Mejl:</label>
+    <input type="text" [(ngModel)]="user.email">
+  
+    <label>Broj kreditne kartice:</label>
+    <input type="text" (input)="checkCard()" [(ngModel)]="user.brojKreditneKartice">@if(card !== "") {<img [src]="card" height="75px" width="75px">}
+    <br>
+  <button (click)="register()">Register</button>
+
+  @if(message === "Uspešna registracija!"){
+    <p class = "successful">{{message}}</p>
+  } @else{
+    <p class = "error">{{message}}</p>
+  }
+  <hr/>
+  <a routerLink="/login">Back</a>
+</div>

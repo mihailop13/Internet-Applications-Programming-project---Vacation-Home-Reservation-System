@@ -1,0 +1,19 @@
+<header>
+  <a routerLink="/turista">Nazad</a>
+  <a routerLink="/login">Izloguj se</a>
+</header>
+<div>  
+    <strong>Naziv vikendice: </strong>{{vikendica.naziv}}<br>
+    <strong>Datum dolaska: </strong>{{changeDateFormat(rezervacija.datumDolaska)}}<br>
+    <strong>Datum odlaska: </strong>{{changeDateFormat(rezervacija.datumOdlaska)}}<br>
+    <strong>Broj odraslih: </strong>{{rezervacija.brojOdraslih}}<br>
+    <strong>Broj dece: </strong>{{rezervacija.brojDece}}<br>
+    <strong>Napomena: </strong><br>
+    <textarea [(ngModel)]="rezervacija.napomena" maxlength="500"></textarea><br>
+    <strong>Cena: </strong>{{rezervacija.cena}}<br>
+    <strong>Broj kreditne kartice: </strong><input type="text" [(ngModel)]="turista.brojKreditneKartice" (input)="checkCard()"> @if(card !== "") {<img [src]="card" height="75px" width="75px">}<br>
+    <button (click)="rezervisi()">Rezervisi!</button>
+</div>
+<footer>
+    Mihailo Pantelić - ETF
+</footer>

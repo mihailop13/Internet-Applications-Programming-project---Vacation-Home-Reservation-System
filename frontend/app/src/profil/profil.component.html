@@ -1,0 +1,41 @@
+<div>
+  <h3>Informacije o profilu</h3>
+
+  @if(!this.azuriraj) {
+    
+    <label>Profilna slika:</label>
+    <img [src]="imageUrl" alt="Profilna slika">
+    <p><strong>Ime:</strong> {{user.ime}}</p>
+    <p><strong>Prezime:</strong> {{user.prezime}}</p>
+    <p><strong>Email:</strong> {{user.email}}</p>
+    <p><strong>Kontakt telefon:</strong> {{user.kontaktTelefon}}</p>
+    <p><strong>Broj kartice:</strong> {{user.brojKreditneKartice}}</p>
+
+    <button (click)="azurirajMode()">Ažuriraj</button>
+  } @else {
+    
+    <label>Izaberite profilnu sliku:</label>
+    <input type="file" class="file-upload" (change)="onFileSelected($event)">
+
+    <label>Ime:</label>
+    <input type="text" [(ngModel)]="user.ime"><br>
+
+    <label>Prezime:</label>
+    <input type="text" [(ngModel)]="user.prezime"><br>
+
+    <label>Email:</label>
+    <input type="text" [(ngModel)]="user.email"><br>
+
+    <label>Kontakt telefon:</label>
+    <input type="text" [(ngModel)]="user.kontaktTelefon"><br>
+
+    <label>Broj kartice:</label>
+    <input type="text" (input)="checkCard()" [(ngModel)]="user.brojKreditneKartice">
+    @if(card !== "") {
+      <img [src]="card" height="75px" width="75px">
+    }
+    <br>
+
+    <button (click)="azurirajPodatke()">Ažuriraj</button>
+  }
+</div>

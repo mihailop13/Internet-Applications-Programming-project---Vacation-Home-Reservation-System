@@ -1,0 +1,117 @@
+<header>
+      <a routerLink="/loginAdmin">Nazad</a>
+</header>
+<div>
+<h3>Korisnici u sistemu:</h3><br>
+<p><strong>Ukupan broj registrovanih korisnika: </strong>{{odobreniKorisnici.length}}</p><br>
+<p><strong>Broj vlasnika: </strong>{{numVlasnici}}</p><br>
+<p><strong>Broj turista: </strong>{{numTuristi}}</p><br>
+@if(odobreniKorisnici.length > 0){
+  <table border="1">
+    <tr>
+      <th>Korisnicko ime</th>
+      <th>Tip</th>
+      <th></th>
+      <th></th>
+    </tr>
+    @for(u of odobreniKorisnici; track u.korisnickoIme){
+      <tr>
+          <td>{{u.korisnickoIme}}</td>
+          <td>{{u.tip}}</td>
+          <td><button class = "button-tabela" (click) = "prikaziIzmeniForma(u)">Izmeni</button></td>
+          <td><button class = "button-tabela" (click)="odbij(u)">Deaktiviraj</button></td>
+      </tr>
+
+    }
+  </table>
+}
+@else {
+    <p>Nema registrovanih korisnika.</p>
+}
+
+@if(izmeniForma){
+    <h3>Azurirajte podatke:</h3><br>
+    <p><strong>Korisnicko ime: <input type="text" [(ngModel)]="korisnikAzuriran.korisnickoIme"></strong></p>
+    <br>
+    <p><strong>Ime: <input type="text" [(ngModel)]="korisnikAzuriran.ime" value = "korisnikAzuriran.ime"></strong></p>
+    <br>
+    <p><strong>Prezime: <input type="text" [(ngModel)]="korisnikAzuriran.prezime" value = "korisnikAzuriran.prezime"></strong></p>
+    <br>
+    <p><strong>Adresa:<input type="text" [(ngModel)] = "korisnikAzuriran.adresa" value = "korisnikAzuriran.adresa"></strong></p>
+    <br>
+    <p><strong>Kontakt telefon:<input type="text" [(ngModel)] = "korisnikAzuriran.kontaktTelefon" value = "korisnikAzuriran.kontaktTelefon"></strong></p>
+    <br>
+    <p><strong>Mejl:<input type="text" [(ngModel)] = "korisnikAzuriran.email" value = "korisnikAzuriran.email"></strong></p>
+    <br>
+    <p><strong>Broj kreditne kartice:<input type="text" (input)="checkCard()" [(ngModel)] = "korisnikAzuriran.brojKreditneKartice" value = "korisnikAzuriran.brojKreditneKartice"> </strong></p>  @if(card !== "") {<img [src]="card" height="75px" width="75px">}
+    <br>
+    <button class = "button-potvrda" (click)="izmeni()">Azuriraj</button>
+}
+
+<h3>Zahtevi za registraciju:</h3><br>
+<strong>Broj zahteva za registraciju: </strong>{{neOdobreniKorisnici.length}}
+@if(neOdobreniKorisnici.length > 0){
+  <table border="1">
+    <tr>
+      <th>Korisnicko ime</th>
+      <th>Ime</th>
+      <th>Prezime</th>
+      <th></th>
+      <th></th>
+    </tr>
+    @for(u of neOdobreniKorisnici; track u.korisnickoIme){
+      <tr>
+          <td>{{u.korisnickoIme}}</td>
+          <td>{{u.ime}}</td>
+          <td>{{u.prezime}}</td>
+          <td><button class = "button-tabela" (click)="odobri(u)">Odobri registraciju</button></td>
+          <td><button class = "button-tabela" (click)="odbij(u)">Odbij registraciju</button></td>
+      </tr>
+    }
+  </table>
+}
+@else {
+  <p>Nema trenutnih zahteva za registraciju.</p>
+}
+
+<h3>Vikendice:</h3>
+@if(vikendice.length > 0){
+  <table border="1">
+    <tr>
+    <th (click)="sortNaziv()">Naziv</th>
+    <th (click)="sortMesto()">Mesto</th>
+  </tr>
+  @for(v of vikendice; track $index){
+    @if(v.ocena.length >= 3){
+      @if(v.ocena[v.ocena.length - 1] <= 2 && v.ocena[v.ocena.length - 2] <= 2 && v.ocena[v.ocena.length - 3] <= 2){
+        <tr style="background-color: red;">
+          <td>{{v.naziv}}</td>
+          <td>{{v.mesto}}</td>
+          @if(v.blokiranoDo === ""){
+            <td><button class = "button-tabela" (click)="block(v)">Blokiraj!</button></td>
+          }
+        </tr>
+      } @else {
+        <tr>
+          <td>{{v.naziv}}</td>
+          <td>{{v.mesto}}</td>
+        </tr>
+      }
+    }@else {
+      <tr>
+        <td>{{v.naziv}}</td>
+        <td>{{v.mesto}}</td>
+      </tr>
+    }
+    
+  }
+  </table>
+}
+@else {
+  <p>Nema vikenica u sistemu.</p>
+}
+</div>
+
+<footer>
+    Mihailo Pantelić - ETF
+</footer>

@@ -1,0 +1,35 @@
+<div>
+    <h2>Unos nove vikendice</h2>
+    <form (ngSubmit)="dodajVikendicu()">
+        <label >JSON fajl(opciono):</label>
+        <input type="file" name = "JSON" (change)="onJSONSelected($event)">
+
+        <label>Naziv vikendice:</label>
+        <input type="text" name = "naziv" [(ngModel)]="vikendica.naziv" >
+
+        <label>Mesto:</label>
+        <input type="text" name = "mesto" [(ngModel)]="vikendica.mesto" >
+
+        <label>Usluge (opis):</label>
+        <textarea  rows="4" name = "usluge" [(ngModel)]="vikendica.usluge" ></textarea>
+
+        <label>Cena noćenja leto(RSD):</label>
+        <input type="number" name = "leto" [(ngModel)]="vikendica.cenaLeto" >
+
+        <label>Cena noćenja zima(RSD):</label>
+        <input type="number" name = "zima" [(ngModel)]="vikendica.cenaZima" >
+
+        <label>Slike vikendice:</label>
+        <input type="file" name = "slike" (change)="onFilesSelected($event)" multiple accept="image/*">
+
+        <label>Geografska sirina:</label>
+        <input type="number" name = "gSirina" [(ngModel)]="vikendica.gSirina">
+
+        <label>Geografska duzina:</label>
+        <input type="number" name = "gDuzina" [(ngModel)]="vikendica.gDuzina">
+
+        <div></div>
+
+        <button type="submit">Potvrdi</button>
+    </form>
+</div>

@@ -1,0 +1,42 @@
+.h3-prvi{
+    margin-top: 40px;
+    margin-bottom: 15px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #999;
+    padding: 8px 12px;
+}
+
+th {
+    background-color: #f2f2f2;
+    cursor: pointer;
+}
+
+.button-potvrda{
+    padding: 6px 12px;
+    background-color: lightseagreen;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.button-tabela{
+    height: 20px;
+    background-color: lightseagreen;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+button:hover { 
+  background-color: rgb(11, 155, 136); 
+}
